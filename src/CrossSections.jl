@@ -1,5 +1,11 @@
 module CrossSections
+using Unitful
+const UF = Unitful
+using Unitful: MeV, NoUnits, cm, m, J, s, kg
+using Random
+using Distributions
 
-# package code goes here
+include("constants.jl")
+include("compton.jl")
 
 end # module

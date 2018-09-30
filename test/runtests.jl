@@ -1,9 +1,15 @@
 using CrossSections
-@static if VERSION < v"0.7.0-DEV.2005"
-    using Base.Test
-else
-    using Test
-end
+using Test
 
-# write your own tests here
-@test 1 == 2
+using Unitful: MeV
+using Random
+rng = MersenneTwister()
+proc = ComptonKleinNishina()
+
+for E in [0.1MeV, 1MeV, 10MeV, 100MeV]
+    for _ in 1:10
+        ret = sample(rng, proc, E)
+        @show E
+        @show ret
+    end
+end
